@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Main :D</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+<h1 th:text="${welcomeMessage}">Добро пожаловать</h1>
+<p>Тут можно выбрать водителя и автомобиль</p>
+<p>
+  <a th:href="@{/users}">Перейти к пользователям</a>
+</p>
+<p>
+  <a th:href="@{/cars}">Перейти к машинам</a>
+</p>
+<p>
+  <a th:href="@{/selection}">Назначить машину пользователю</a>
+</p>
+</body>
+</html>

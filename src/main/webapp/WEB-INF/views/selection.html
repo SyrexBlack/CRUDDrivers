@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Назначить машину пользователю</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+<h1>Назначение машины пользователю</h1>
+<form th:action="@{/assign}" method="post">
+  <label for="userSelect">Пользователь:</label>
+  <select name="userId" id="userSelect">
+    <option value="" disabled selected>Выберите пользователя</option>
+    <option th:each="usr : ${users}"
+            th:value="${usr.id}"
+            th:text="${usr.name}"></option>
+  </select>
+  <label for="carSelect">Машина:</label>
+  <select name="carModel" id="carSelect">
+    <option value="" disabled selected>Выберите машину</option>
+    <option th:each="car : ${cars}"
+            th:value="${car.model}"
+            th:text="${car.brand} + ' ' + ${car.model}"></option>
+  </select>
+  <button type="submit">Назначить</button>
+</form>
+<hr>
+<h2>Назначенные пары «Водитель – Машина»</h2>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Водитель</th>
+    <th>Машина</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="ap : ${assignments}">
+    <td th:text="${ap.driverName}">Имя</td>
+    <td th:text="${ap.carModel}">Машина</td>
+  </tr>
+  </tbody>
+</table>
+<p>
+  <a th:href="@{/}">
+    <button>Назад</button>
+  </a>
+</p>
+</body>
+</html>

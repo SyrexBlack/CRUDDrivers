@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Список машин</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+<h1>Список машин</h1>
+
+<table border="1">
+  <thead>
+  <tr><th>Модель</th><th>Бренд</th><th>Год</th></tr>
+  </thead>
+  <tbody>
+  <tr th:each="car : ${cars}">
+    <td th:text="${car.model}">model</td>
+    <td th:text="${car.brand}">brand</td>
+    <td th:text="${car.year}">year</td>
+  </tr>
+  </tbody>
+</table>
+
+<h2>Добавить машину</h2>
+<form th:action="@{/cars/add}" method="post">
+  <p>Модель: <input type="text" name="modelCar"/></p>
+  <p>Бренд: <input type="text" name="brand"/></p>
+  <p>Год: <input type="number" name="year"/></p>
+  <button type="submit">Добавить</button>
+</form>
+<p>
+  <a th:href="@{/}">
+    <button>Назад</button>
+  </a>
+</p>
+</body>
+</html>
